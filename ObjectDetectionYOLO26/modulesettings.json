@@ -1,0 +1,317 @@
+{
+  "Modules": {
+
+    "ObjectDetectionYOLO26": {
+      "Name": "Object Detection (YOLO26)",
+      "Version": "1.1.1",
+
+      "PublishingInfo" : {
+        "Description" : "Object Detection (YOLO26) optimized for Python 3.12, Numpy 2.2.3, PyTorch 2.6.0, Ultralytics 8.4.14, CUDA 12.4, cuDNN 9",
+        "PublishDate" : "2026-10-15",
+        "Category"    : "Computer Vision",
+        "Stack"       : "Python, Numpy, PyTorch, CUDA, cuDNN, YOLO26",
+        "License"     : "AGPL-3.0",
+        "LicenseUrl"  : "https://www.gnu.org/licenses/agpl-3.0.en.html",
+        "Author"      : "Mark D. Renard",
+        "Homepage"    : "https://github.com/MarkDRenard/CodeProject.AI-Modules",
+        "BasedOn"     : "Ultralytics",
+        "BasedOnUrl"  : "https://github.com/ultralytics/ultralytics"
+      },
+
+      "LaunchSettings": {
+        "Activate"           : true,
+        "AutoStart"          : true,
+        "SupportGPU"         : true,
+        "ProcessEnvironment" : "Python",
+        "Runtime"            : "python3.12",
+        "FilePath"           : "detect_adapter.py",
+        "RuntimeLocation"    : "Local",
+        "PostStartPauseSecs" : 1,
+        "Queue"              : "objectdetection_queue",
+        "Parallelism"        : 0,
+        "Args"               : ""
+      },
+
+      "EnvironmentVariables": {
+        "YOLO_VERBOSE"       : "false",
+
+        "MODEL_SIZE"         : "Nano",
+        "CUDA_MODULE_LOADING" : "LAZY",
+        "USE_CUDA"           : "True",
+        "APPDIR"             : "%CURRENT_MODULE_PATH%",
+        "PYTHONPATH"         : "%CURRENT_MODULE_PATH%",
+        "MODELS_DIR"         : "%CURRENT_MODULE_PATH%/assets",
+        "CUSTOM_MODELS_DIR"  : "%CURRENT_MODULE_PATH%/custom-models"
+      },
+
+      "GpuOptions" : {
+        "InstallGPU"            : true,
+        "EnableGPU"             : true,
+        "AcceleratorDeviceName" : null,
+        "HalfPrecision"         : "enable"
+      },
+
+      "InstallOptions" : {
+        "Platforms":      [ "windows" ],
+        "GPUExecutionProvider": "CUDA",
+        "ModuleReleases": [
+          { "ModuleVersion": "1.0.1", "ServerVersionRange": [ "2.9.5", "" ], "ReleaseDate": "2026-08-15", "ReleaseNotes": "Initial release for Windows x64 with NVIDIA RTX GPU" }
+          ,{ "ModuleVersion": "1.1.1", "ServerVersionRange": [ "2.9.5", "" ], "ReleaseDate": "2026-10-15", "ReleaseNotes": "Upgrades to python, numpy, pytorch, torchvision, setuptools, opencv-python, urllib3, ultralytics, CUDA, cuDNN. See (requirements.txt) for specific versions." }
+        ],
+        "DownloadableModels":[
+          { 
+            "Name": "Detection",
+            "Filename": "detection-yolo26-pt.zip",
+	          "FileSizeKb": 218559,
+            "Folder": "assets", 
+            "Description": "Expanding Object Detection pt models.",
+            "PreInstall": true
+          },
+          { 
+            "Name": "Segmentation", 
+            "Filename": "segmentation-yolo26-pt.zip",
+            "FileSizeKb": 262942, 
+            "Folder": "assets", 
+	          "Description": "Expanding Instance Segmentation pt models.", 
+            "PreInstall": true
+          },
+          { 
+            "Name": "Custom", 
+            "Filename": "custom-yolo26-pt.zip",
+            "FileSizeKb": 18179, 
+            "Folder": "custom-models",
+            "Description": "Expanding Custom Detection pt models.", 
+            "PreInstall": true
+          }
+        ]
+      },
+
+      "ModelRequirements" : [{
+          "Task": "Object Detection",
+          "Architecture": "YOLO26",
+          "Format": "PyTorch"
+      },{
+          "Task": "Object Segmentation",
+          "Architecture": "YOLO26",
+          "Format": "PyTorch"
+      }],
+
+      "UIElements" : {
+        "Menus": [{
+          "Label": "Half Precision",
+          "Options": [
+            { "Label": "Force on",    "Setting": "CPAI_HALF_PRECISION", "Value": "force"   },
+            { "Label": "Use Default", "Setting": "CPAI_HALF_PRECISION", "Value": "enable"  },
+            { "Label": "Disable",     "Setting": "CPAI_HALF_PRECISION", "Value": "disable" }
+          ]
+        },
+        {
+          "Label": "Model Size",
+          "Options": [
+              { "Label": "Nano",   "Setting": "MODEL_SIZE", "Value": "tiny"   },
+              { "Label": "Small",  "Setting": "MODEL_SIZE", "Value": "small"  },
+              { "Label": "Medium", "Setting": "MODEL_SIZE", "Value": "medium" },
+              { "Label": "Large",  "Setting": "MODEL_SIZE", "Value": "large"  },
+              { "Label": "XLarge", "Setting": "MODEL_SIZE", "Value": "huge"   }
+          ]
+        }]
+      },
+
+      "RouteMaps": [
+        {
+          "Name": "Object Detector (YOLO26)",
+          "Route": "vision/detection",
+          "Method": "POST",
+          "Command": "detect",
+          "Description": "Detection of multiple objects in an image.",
+          "Inputs": [
+            {
+              "Name": "image",
+              "Type": "File",
+              "Description": "The HTTP image to analyze."
+            },
+            {
+              "Name": "min_confidence",
+              "Type": "Float",
+              "Description": "The minimum confidence for an object being detected. Range 0.0 to 1.0. Default 0.4.",
+              "DefaultValue": 0.4,
+              "MinValue": 0.0,
+              "MaxValue": 1.0
+            }
+          ],
+          "Outputs": [
+            {
+              "Name": "success",
+              "Type": "Boolean",
+              "Description": "True if successful."
+            },
+            {
+              "Name": "message",
+              "Type": "String",
+              "Description": "A summary of the inference operation."
+            },
+            {
+              "Name": "error",
+              "Type": "String",
+              "Description": "(Optional) An description of the error if success was false."
+            },
+            {
+              "Name": "predictions",
+              "Type": "Object[]",
+              "Description": "An array of objects with the x_max, x_min, max, y_min, label and confidence."
+            },
+            {
+              "Name": "count",
+              "Type": "Integer",
+              "Description": "The number of objects found."
+            },
+            {
+              "Name": "inferenceMs",
+              "Type": "Integer",
+              "Description": "The time (ms) to perform the AI inference."
+            },
+            {
+              "Name": "processMs",
+              "Type": "Integer",
+              "Description": "The time (ms) to process the image (includes inference and image manipulation operations)."
+            }
+          ]
+        },
+
+        {
+          "Name": "Custom Object Detector (YOLO26)",
+          "Route": "vision/custom",
+          "Method": "POST",
+          "Command": "custom",
+          "MeshEnabled": false,
+          "Description": "Detects multiple custom objects in an image.",
+          "Inputs": [
+            {
+              "Name": "image",
+              "Type": "File",
+              "Description": "The HTTP image to be analyzed."
+            },
+            {
+              "Name": "min_confidence",
+              "Type": "Float",
+              "Description": "The minimum confidence level for an object will be detected. Range 0.0 to 1.0. Default 0.4."
+            }
+          ],
+          "Outputs": [
+            {
+              "Name": "success",
+              "Type": "Boolean",
+              "Description": "True if successful."
+            },
+            {
+              "Name": "message",
+              "Type": "String",
+              "Description": "A summary of the inference operation."
+            },
+            {
+              "Name": "error",
+              "Type": "String",
+              "Description": "(Optional) An description of the error if success was false."
+            },
+            {
+              "Name": "predictions",
+              "Type": "Object[]",
+              "Description": "An array of objects with the x_max, x_min, max, y_min, mask, label and confidence."
+            },
+            {
+              "Name": "inferenceMs",
+              "Type": "Integer",
+              "Description": "The time (ms) to perform the AI inference."
+            },
+            {
+              "Name": "processMs",
+              "Type": "Integer",
+              "Description": "The time (ms) to process the image (includes inference and image manipulation operations)."
+            }
+          ]
+        },
+
+        {
+          "Name": "Object Segmentation (YOLO26)",
+          "Route": "vision/segmentation",
+          "Method": "POST",
+          "Command": "segment",
+          "Description": "Instance-Segmentation of multiple objects in an image.",
+          "Inputs": [
+            {
+              "Name": "image",
+              "Type": "File",
+              "Description": "The HTTP file object (image) to be analyzed."
+            },
+            {
+              "Name": "min_confidence",
+              "Type": "Float",
+              "Description": "The minimum confidence level for an object will be detected. In the range 0.0 to 1.0. Default 0.4.",
+              "DefaultValue": 0.4,
+              "MinValue": 0.0,
+              "MaxValue": 1.0
+            }
+          ],
+          "Outputs": [
+            {
+              "Name": "success",
+              "Type": "Boolean",
+              "Description": "True if successful."
+            },
+            {
+              "Name": "message",
+              "Type": "String",
+              "Description": "A summary of the inference operation."
+            },
+            {
+              "Name": "error",
+              "Type": "String",
+              "Description": "(Optional) An description of the error if success was false."
+            },
+            {
+              "Name": "predictions",
+              "Type": "Object[]",
+              "Description": "An array of objects with the x_max, x_min, max, y_min, label and confidence."
+            },
+            {
+              "Name": "count",
+              "Type": "Integer",
+              "Description": "The number of objects found."
+            },
+            {
+              "Name": "inferenceMs",
+              "Type": "Integer",
+              "Description": "The time (ms) to perform the AI inference."
+            },
+            {
+              "Name": "processMs",
+              "Type": "Integer",
+              "Description": "The time (ms) to process the image (includes inference and image manipulation operations)."
+            }
+          ]
+        },
+
+        {
+          "Name": "Object Detector Custom Models (YOLO26)",
+          "Route": "vision/custom/list",
+          "Method": "POST",
+          "Command": "list-custom",
+          "Description": "Returns a list of models available.",
+          "Inputs": [],
+          "Outputs": [
+            {
+              "Name": "success",
+              "Type": "Boolean",
+              "Description": "True if successful."
+            },
+            {
+              "Name": "models",
+              "Type": "String",
+              "Description": "An array of strings containing the names of the models installed."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

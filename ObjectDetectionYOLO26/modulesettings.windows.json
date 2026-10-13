@@ -1,0 +1,10 @@
+{
+  "Modules": {
+
+    "ObjectDetectionYOLO26": {
+      "LaunchSettings": {
+        "Runtime": "python3.12"
+      }
+    }
+  }
+}
