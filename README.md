@@ -1,4 +1,4 @@
-# Custom CodeProject.AI Modules
+# Custom CodeProject.AI-(v2.9.5) Modules
 
 A collection of optimized third-party microservice modules for CodeProject.AI Server.
 
