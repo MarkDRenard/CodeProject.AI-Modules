@@ -38,7 +38,7 @@ Follow these steps to manually load these modules into your local CodeProject.AI
 2. Navigate to the ObjectDetectionYOLO26 Python 3.12 scripts folder by running:
    ```cmd
    cd "C:\Program Files\CodeProject\AI\modules\ObjectDetectionYOLO26\bin\windows\python312\venv\Scripts"
-   
+   ```
 3. Copy, paste and run this python script from the 'python312\venv\Scripts' folder:
     ```cmd
     python.exe -c "import sys, torch, numpy; print(f'--- ENVIRONMENT STATUS ---\nPython: {sys.version.split()[0]}\nNumPy: {numpy.__version__}\nPyTorch: {torch.__version__}\nCUDA Available: {torch.cuda.is_available()}\nGPU Model: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else \"None\"}\ncuDNN Version: {torch.backends.cudnn.version()}\n--------------------------')"
