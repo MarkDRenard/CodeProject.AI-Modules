@@ -45,8 +45,8 @@ Follow these steps to manually load these modules into your local CodeProject.AI
  
  You should see something like this that verifies the current enviornnment of your new ObjectDetectionYOLO26 module. Including, CUDA 12.4 and cuDNN 9 running inside the module. You don't need to modify or reconfigure your existing CUDA or cuDNN global installations within the Windows enviornment.
   
-####ENVIRONMENT STATUS 
-Python: 3.12.4
+#### ENVIRONMENT STATUS 
+#### Python: 3.12.4
 NumPy: 2.2.3
 PyTorch: 2.6.0+cu124
 CUDA Available: True
