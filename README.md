@@ -9,7 +9,7 @@ A collection of optimized third-party microservice modules for CodeProject.AI Se
 Follow these steps to manually load these modules into your local CodeProject.AI Server instance:
 
 ### (First things First!) Open the CodeProject.AL dashboard and stop your current ObjectDetection (Yolo*) module
-### and make sure it stops. You should not run multiple versions of Object Detection modules at the same time.
+and make sure it stops. You should not run multiple versions of Object Detection modules at the same time.
 
 ### Step 1: Download the Modules
 1. Click the green **Code** button at the top right of this GitHub page.
@@ -46,19 +46,18 @@ Follow these steps to manually load these modules into your local CodeProject.AI
     python.exe -c "import sys, torch, numpy; print(f'--- ENVIRONMENT STATUS ---\nPython: {sys.version.split()[0]}\nNumPy: {numpy.__version__}\nPyTorch: {torch.__version__}\nCUDA Available: {torch.cuda.is_available()}\nGPU Model: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else \"None\"}\ncuDNN Version: {torch.backends.cudnn.version()}\n--------------------------')"
     ```cmd
     
-    You should see something like this that verifies the current enviornnment of your new ObjectDetectionYOLO26 module. Including,
-    CUDA 12.4 and cuDNN 9 running inside the module. You don't need to modify or reconfigure your existing CUDA or cuDNN global
-    installations within the Windows enviornment.
+ ### You should see something like this that verifies the current enviornnment of your new ObjectDetectionYOLO26 module. Including,
+ CUDA 12.4 and cuDNN 9 running inside the module. You don't need to modify or reconfigure your existing CUDA or cuDNN global
+ installations within the Windows enviornment.
     
-    --- ENVIRONMENT STATUS ---
-    Python: 3.12.4
-    NumPy: 2.2.3
-    PyTorch: 2.6.0+cu124
-    CUDA Available: True
-    GPU Model: NVIDIA GeForce RTX 2060
-    cuDNN Version: 90100
-    --------------------------
+ --- ENVIRONMENT STATUS ---
+ Python: 3.12.4
+ NumPy: 2.2.3
+ PyTorch: 2.6.0+cu124
+ CUDA Available: True
+ GPU Model: NVIDIA GeForce RTX 2060
+ cuDNN Version: 90100
+ --------------------------
 
-    You should see something like this that verifies the current enviornment for the ObjectDetectionYOLO26 module. Including,
     CUDA 12.4 and cuDNN 9 running within the m
     
