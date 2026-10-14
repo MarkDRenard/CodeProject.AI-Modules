@@ -30,7 +30,7 @@ Follow these steps to manually load these modules into your local CodeProject.AI
 3. Run the CodeProject setup.bat script to build the virtual environment and fetch the models:
    ```cmd
    ..\..\setup.bat
-   
+   ```
 4. Restart your **CodeProject.AI Server** service. The new module will initialize inside your local system dashboard and be designated as 'Private' under the Installed Modules Tab. If you encounter errors during setup.bat, open Windows Explorer and navigate to the ObjectDetectionYOLO26\logs folder and checkout the log files to help pinpoint and troubleshoot the problem.
    
 ### Step 4: Verify and Confirm your Module Enviornment
