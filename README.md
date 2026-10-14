@@ -8,7 +8,7 @@ A collection of optimized third-party microservice modules for CodeProject.AI Se
 
 Follow these steps to manually load these modules into your local CodeProject.AI Server instance:
 
-## (First things First!) ### Open the CodeProject.AL dashboard and stop your current ObjectDetection (Yolo*) module and make sure it stops. You should not run multiple versions of Object Detection modules at the same time.
+### First things First! Open the CodeProject.AL dashboard and stop your current ObjectDetection (Yolo*) module and make sure it stops. You should not run multiple versions of Object Detection modules at the same time.
 
 ### Step 1: Download the Modules
 1. Click the green **Code** button at the top right of this GitHub page.
