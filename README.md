@@ -51,7 +51,7 @@ Follow these steps to manually load these modules into your local CodeProject.AI
 ##### PyTorch: 2.6.0+cu124
 ##### CUDA Available: True
 ##### GPU Model: NVIDIA GeForce RTX 2060
-#### cuDNN Version: 90100
+##### cuDNN Version: 90100
  
 
     
