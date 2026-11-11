@@ -23,7 +23,7 @@ opencv-python==4.11.0.86
 pillow==11.1.0
 
 # Deep Learning Framework & Model Management
-ultralytics==8.4.14
+ultralytics==8.4.184
 ultralytics-thop==2.1.6
 
 # Networking & Pipeline Utilities

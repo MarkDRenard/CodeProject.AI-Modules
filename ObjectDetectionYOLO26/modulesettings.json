@@ -6,7 +6,7 @@
       "Version": "1.1.1",
 
       "PublishingInfo" : {
-        "Description" : "Object Detection (YOLO26) optimized for Python 3.12, Numpy 2.2.3, PyTorch 2.6.0, Ultralytics 8.4.14, CUDA 12.4, cuDNN 9",
+        "Description" : "Object Detection (YOLO26) optimized for Python 3.12, Numpy 2.2.3, PyTorch 2.6.0, Ultralytics 8.4.184, CUDA 12.4, cuDNN 9",
         "PublishDate" : "2026-10-15",
         "Category"    : "Computer Vision",
         "Stack"       : "Python, Numpy, PyTorch, CUDA, cuDNN, YOLO26",
@@ -35,7 +35,7 @@
       "EnvironmentVariables": {
         "YOLO_VERBOSE"       : "false",
 
-        "MODEL_SIZE"         : "Nano",
+        "MODEL_SIZE"         : "Small",
         "CUDA_MODULE_LOADING" : "LAZY",
         "USE_CUDA"           : "True",
         "APPDIR"             : "%CURRENT_MODULE_PATH%",
@@ -57,6 +57,7 @@
         "ModuleReleases": [
           { "ModuleVersion": "1.0.1", "ServerVersionRange": [ "2.9.5", "" ], "ReleaseDate": "2026-08-15", "ReleaseNotes": "Initial release for Windows x64 with NVIDIA RTX GPU" }
           ,{ "ModuleVersion": "1.1.1", "ServerVersionRange": [ "2.9.5", "" ], "ReleaseDate": "2026-10-15", "ReleaseNotes": "Upgrades to python, numpy, pytorch, torchvision, setuptools, opencv-python, urllib3, ultralytics, CUDA, cuDNN. See (requirements.txt) for specific versions." }
+           ,{ "ModuleVersion": "1.1.2", "ServerVersionRange": [ "2.9.5", "" ], "ReleaseDate": "2026-10-30", "ReleaseNotes": "Upgrade Ultralytics 8.4.184." }
         ],
         "DownloadableModels":[
           { 
